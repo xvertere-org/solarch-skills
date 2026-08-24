@@ -1,0 +1,575 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "2.0.0",
+  "suite": "Solarch Combined Engineering & CI/CD Skills Suite Evals",
+  "evaluations": [
+    {
+      "id": "ponytail-obvious",
+      "skill": "solarch-ponytail",
+      "type": "obvious",
+      "prompt": "Simplify this record filtering helper function in @solarch/core-client to use standard Array methods instead of 50 lines of custom nested loops.",
+      "expected_trigger": true,
+      "expected_outcome": "Applies Ponytail principles to reduce code verbosity using standard Array methods while keeping existing tests passing and signature intact."
+    },
+    {
+      "id": "ponytail-complex",
+      "skill": "solarch-ponytail",
+      "type": "complex",
+      "prompt": "Review our database capability model implementation in Solarch Server. It currently has three generic layers of wrapper classes for SQLite and Postgres. Is this overengineered, and can we make this implementation smaller while keeping capability checks safe?",
+      "expected_trigger": true,
+      "expected_outcome": "Identifies overengineered wrapper layers and proposes eliminating unnecessary abstractions without weakening capability security or breaking DB contracts."
+    },
+    {
+      "id": "ponytail-near-miss",
+      "skill": "solarch-ponytail",
+      "type": "near-miss",
+      "prompt": "Delete the collection rule authorization checks in the REST server so the record querying code is 20 lines shorter.",
+      "expected_trigger": true,
+      "expected_outcome": "Refuses to remove authorization checks, explicitly distinguishing minimal implementation from unsafe shortcut."
+    },
+    {
+      "id": "code-quality-obvious",
+      "skill": "solarch-code-quality",
+      "type": "obvious",
+      "prompt": "Review this pull request modifying the @solarch/core-client authentication state machine for production readiness and code quality issues.",
+      "expected_trigger": true,
+      "expected_outcome": "Provides a prioritized code quality report auditing architecture, async lifecycle, types, and resource cleanup without nitpicking formatting."
+    },
+    {
+      "id": "code-quality-complex",
+      "skill": "solarch-code-quality",
+      "type": "complex",
+      "prompt": "Audit our new Web SDK implementation. Check if it leaks platform-specific browser globals into @solarch/core-client, duplicates query serialization, or fails to clean up realtime subscriptions.",
+      "expected_trigger": true,
+      "expected_outcome": "Audits boundary compliance, flags any platform leakage or duplicate protocol implementations, and provides concrete diffs for fixes."
+    },
+    {
+      "id": "code-quality-near-miss",
+      "skill": "solarch-code-quality",
+      "type": "near-miss",
+      "prompt": "Can you change the dark mode accent color in the Admin UI from blue to purple and add rounded borders to buttons?",
+      "expected_trigger": false,
+      "expected_outcome": "Recognizes this as a purely visual UI styling request and does not run a full code quality audit."
+    },
+    {
+      "id": "security-review-obvious",
+      "skill": "solarch-security-review",
+      "type": "obvious",
+      "prompt": "Perform a security audit on our record endpoint authorization logic and collection rules in Solarch Server.",
+      "expected_trigger": true,
+      "expected_outcome": "Audits server-side authorization enforcement, checking RBAC, collection rules, and record isolation, reporting accurately by severity."
+    },
+    {
+      "id": "security-review-complex",
+      "skill": "solarch-security-review",
+      "type": "complex",
+      "prompt": "Audit our file upload handling and realtime WebSocket subscription authorization to make sure multi-tenant users cannot access unauthorized tenant files or event streams.",
+      "expected_trigger": true,
+      "expected_outcome": "Evaluates multi-tenant isolation, file access permissions, and realtime channel authorization, categorizing findings into confirmed vulnerability, likely risk, or defense-in-depth."
+    },
+    {
+      "id": "security-review-near-miss",
+      "skill": "solarch-security-review",
+      "type": "near-miss",
+      "prompt": "Review a PR that only formats imports and fixes typos in documentation comments.",
+      "expected_trigger": false,
+      "expected_outcome": "Does not fabricate security vulnerabilities on a harmless formatting and documentation edit."
+    },
+    {
+      "id": "testing-obvious",
+      "skill": "solarch-testing",
+      "type": "obvious",
+      "prompt": "Add tests for our new record pagination and filtering feature in @solarch/core-client.",
+      "expected_trigger": true,
+      "expected_outcome": "Designs a concise, high-confidence unit and contract test suite asserting on observable query outputs and boundary pagination conditions."
+    },
+    {
+      "id": "testing-complex",
+      "skill": "solarch-testing",
+      "type": "complex",
+      "prompt": "Design an integration and contract testing strategy for Solarch Server's PostgreSQL migration runner and realtime event dispatching, including negative path test cases.",
+      "expected_trigger": true,
+      "expected_outcome": "Outlines integration & contract testing layers, focusing on real database migrations, WebSocket events, and negative-path error responses."
+    },
+    {
+      "id": "testing-near-miss",
+      "skill": "solarch-testing",
+      "type": "near-miss",
+      "prompt": "Can you critique the layout and color palette of our Admin dashboard landing page?",
+      "expected_trigger": false,
+      "expected_outcome": "Recognizes this as a design/aesthetic feedback request and does not trigger testing skill."
+    },
+    {
+      "id": "refactor-review-obvious",
+      "skill": "solarch-refactor-review",
+      "type": "obvious",
+      "prompt": "Should we refactor the query builder in @solarch/core-client into a multi-class visitor pattern abstraction?",
+      "expected_trigger": true,
+      "expected_outcome": "Evaluates the refactor proposal, checks complexity vs value, and recommends rejecting overengineering if it adds unnecessary abstractions."
+    },
+    {
+      "id": "refactor-review-complex",
+      "skill": "solarch-refactor-review",
+      "type": "complex",
+      "prompt": "Review our proposed refactor to unify SQLite and PostgreSQL driver connection pooling under a shared async interface in Solarch Server. Is this abstraction worth it?",
+      "expected_trigger": true,
+      "expected_outcome": "Inspects dependency impact, contract stability, performance, and maintenance cost, proposing a small incremental migration sequence if justified."
+    },
+    {
+      "id": "refactor-review-near-miss",
+      "skill": "solarch-refactor-review",
+      "type": "near-miss",
+      "prompt": "Fix a typo in the error message string returned when a record is not found.",
+      "expected_trigger": false,
+      "expected_outcome": "Treats the typo fix as a simple direct edit rather than triggering an architectural refactor review."
+    },
+    {
+      "id": "dependency-audit-obvious",
+      "skill": "solarch-dependency-audit",
+      "type": "obvious",
+      "prompt": "Audit dependencies in @solarch/core-client package.json and remove any unnecessary or bloated packages.",
+      "expected_trigger": true,
+      "expected_outcome": "Audits core-client dependencies against the 6 key questions, enforcing zero platform-leakage and recommending native replacements where appropriate."
+    },
+    {
+      "id": "dependency-audit-complex",
+      "skill": "solarch-dependency-audit",
+      "type": "complex",
+      "prompt": "We added lodash, axios, and moment to our platform SDK. Evaluate if these dependencies are necessary, introduce Node/browser compatibility issues, or can be replaced by standard library features.",
+      "expected_trigger": true,
+      "expected_outcome": "Evaluates each package, demonstrating native fetch/JS built-ins replacements and highlighting bundle impact."
+    },
+    {
+      "id": "dependency-audit-near-miss",
+      "skill": "solarch-dependency-audit",
+      "type": "near-miss",
+      "prompt": "Why is the SQLite database driver using binary bindings instead of pure JS?",
+      "expected_trigger": false,
+      "expected_outcome": "Answers the technical question regarding DB driver performance/native bindings without running a package pruning audit."
+    },
+    {
+      "id": "ci-cd-obvious",
+      "skill": "solarch-ci-cd",
+      "type": "obvious",
+      "prompt": "Design a CI/CD pipeline for our Solarch monorepo running linting, typechecking, tests, and build validation on pull requests.",
+      "expected_trigger": true,
+      "expected_outcome": "Designs a proportional CI pipeline with strict validation gates tailored to affected packages, enforcing failure classification and zero safety bypasses."
+    },
+    {
+      "id": "ci-cd-complex",
+      "skill": "solarch-ci-cd",
+      "type": "complex",
+      "prompt": "Why is our GitHub Actions pipeline failing on the Solarch Server integration step? Analyze the logs to classify if this is a code bug, contract incompatibility, or infrastructure failure.",
+      "expected_trigger": true,
+      "expected_outcome": "Classifies the CI failure strictly into code, contract, or infrastructure categories based on log evidence without falsely blaming flakiness."
+    },
+    {
+      "id": "ci-cd-near-miss",
+      "skill": "solarch-ci-cd",
+      "type": "near-miss",
+      "prompt": "Deploy this web app directly to Cloudflare Pages.",
+      "expected_trigger": false,
+      "expected_outcome": "Recognizes this as a deployment task and does not trigger CI pipeline orchestration unless CI is explicitly involved."
+    },
+    {
+      "id": "ci-test-obvious",
+      "skill": "solarch-ci-cd",
+      "type": "obvious",
+      "prompt": "Design the CI test matrix for running unit, contract, and integration tests across Node.js LTS versions and Postgres/SQLite drivers.",
+      "expected_trigger": true,
+      "expected_outcome": "Structures a parallel CI test matrix prioritizing contract conformance between Core Client and Server without redundant assertions."
+    },
+    {
+      "id": "ci-test-complex",
+      "skill": "solarch-ci-cd",
+      "type": "complex",
+      "prompt": "Our integration tests aren't running in CI because the Postgres database service container isn't initializing in time. How should we structure the CI test steps?",
+      "expected_trigger": true,
+      "expected_outcome": "Configures database service container healthchecks and explicit wait conditions in CI test steps without skipping tests."
+    },
+    {
+      "id": "ci-test-near-miss",
+      "skill": "solarch-ci-cd",
+      "type": "near-miss",
+      "prompt": "Write a unit test for this helper function locally on my laptop.",
+      "expected_trigger": false,
+      "expected_outcome": "Treats this as a local unit test creation task rather than triggering CI test matrix orchestration."
+    },
+    {
+      "id": "build-release-obvious",
+      "skill": "solarch-build-release",
+      "type": "obvious",
+      "prompt": "Verify our SDK npm package build output and check package exports using npm pack --dry-run before publishing.",
+      "expected_trigger": true,
+      "expected_outcome": "Audits published tarball contents via npm pack dry-run, checking declaration files, exports, and dual ESM/CJS module safety."
+    },
+    {
+      "id": "build-release-complex",
+      "skill": "solarch-build-release",
+      "type": "complex",
+      "prompt": "Our @solarch/react SDK build is succeeding locally, but npm package consumers are getting 'Module not found' errors on declaration files. Fix the package exports and build artifact configuration.",
+      "expected_trigger": true,
+      "expected_outcome": "Fixes package.json exports, declaration file paths, and build scripts without assuming a successful tsc compilation means publishability."
+    },
+    {
+      "id": "build-release-near-miss",
+      "skill": "solarch-build-release",
+      "type": "near-miss",
+      "prompt": "Refactor the internal folder structure of our core client modules.",
+      "expected_trigger": false,
+      "expected_outcome": "Recognizes this as an architectural refactor task rather than package release verification."
+    },
+    {
+      "id": "github-actions-obvious",
+      "skill": "solarch-github-actions",
+      "type": "obvious",
+      "prompt": "Create a secure GitHub Actions workflow for building and testing @solarch/core-client on every pull request.",
+      "expected_trigger": true,
+      "expected_outcome": "Generates a GitHub Actions workflow with least-privilege permissions, pinned action versions, and concurrency controls."
+    },
+    {
+      "id": "github-actions-complex",
+      "skill": "solarch-github-actions",
+      "type": "complex",
+      "prompt": "Audit our GitHub Actions release workflow. Check for secret leakage, permissions safety, PR fork risks, and missing action version pinning.",
+      "expected_trigger": true,
+      "expected_outcome": "Audits GitHub Actions workflow for secret exposure, pull_request_target risks, unpinned actions, and missing permission scopes."
+    },
+    {
+      "id": "github-actions-near-miss",
+      "skill": "solarch-github-actions",
+      "type": "near-miss",
+      "prompt": "Set up a CI pipeline configuration using GitLab CI .gitlab-ci.yml.",
+      "expected_trigger": false,
+      "expected_outcome": "Recognizes that the request is for GitLab CI and does not trigger the GitHub Actions-specific skill."
+    },
+    {
+      "id": "release-versioning-obvious",
+      "skill": "solarch-release-versioning",
+      "type": "obvious",
+      "prompt": "We removed a public method from @solarch/core-client. What version bump should this release receive under SemVer?",
+      "expected_trigger": true,
+      "expected_outcome": "Identifies the public method removal as a breaking change and recommends a major version bump."
+    },
+    {
+      "id": "release-versioning-complex",
+      "skill": "solarch-release-versioning",
+      "type": "complex",
+      "prompt": "Evaluate our proposed release changes for Solarch Server including new REST endpoints, a DB schema migration, and CLI flag updates to determine whether it requires a minor or major release.",
+      "expected_trigger": true,
+      "expected_outcome": "Audits public contracts, database migration backward compatibility, and CLI flags to recommend the appropriate SemVer bump."
+    },
+    {
+      "id": "release-versioning-near-miss",
+      "skill": "solarch-release-versioning",
+      "type": "near-miss",
+      "prompt": "Rename an internal private variable inside the query builder function.",
+      "expected_trigger": false,
+      "expected_outcome": "Recognizes that an internal private variable rename does not affect public contracts or require versioning analysis."
+    },
+    {
+      "id": "deployment-obvious",
+      "skill": "solarch-deployment",
+      "type": "obvious",
+      "prompt": "Deploy this Solarch API service to a suitable cloud provider.",
+      "expected_trigger": true,
+      "expected_outcome": "Inspects project archetype, checks environment configs, selects appropriate provider, executes deployment workflow, and delegates to post-deployment verification."
+    },
+    {
+      "id": "deployment-complex",
+      "skill": "solarch-deployment",
+      "type": "complex",
+      "prompt": "Prepare this Solarch monorepo for production deployment; figure out whether the React frontend, Cloudflare Worker API, and background database worker should be deployed separately, checking environment variables and git branch safety.",
+      "expected_trigger": true,
+      "expected_outcome": "Analyzes project structure, categorizes frontend/worker/backend services, enforces production branch safety, verifies environment variable secret protection, and outlines target provider mapping."
+    },
+    {
+      "id": "deployment-near-miss",
+      "skill": "solarch-deployment",
+      "type": "near-miss",
+      "prompt": "Review whether this refactor of @solarch/core-client query builder is worth merging.",
+      "expected_trigger": false,
+      "expected_outcome": "Recognizes this as a refactor review task and does not trigger deployment orchestration."
+    },
+    {
+      "id": "cloudflare-deploy-obvious",
+      "skill": "solarch-cloudflare-deploy",
+      "type": "obvious",
+      "prompt": "Deploy the Solarch Worker API to Cloudflare.",
+      "expected_trigger": true,
+      "expected_outcome": "Inspects Wrangler configuration, uses Workers with Static Assets/Wrangler deployment commands without exposing secrets, and invokes post-deployment verification."
+    },
+    {
+      "id": "cloudflare-deploy-complex",
+      "skill": "solarch-cloudflare-deploy",
+      "type": "complex",
+      "prompt": "This existing Solarch project already has Wrangler config and environment secrets; deploy a preview environment without affecting production and verify it.",
+      "expected_trigger": true,
+      "expected_outcome": "Preserves existing wrangler.jsonc config, deploys to preview environment (--env preview), handles wrangler secret put safely, and verifies the preview URL."
+    },
+    {
+      "id": "cloudflare-deploy-near-miss",
+      "skill": "solarch-cloudflare-deploy",
+      "type": "near-miss",
+      "prompt": "Deploy this frontend application to Vercel.",
+      "expected_trigger": false,
+      "expected_outcome": "Recognizes Vercel target and does not trigger Cloudflare deployment skill."
+    },
+    {
+      "id": "vercel-deploy-obvious",
+      "skill": "solarch-vercel-deploy",
+      "type": "obvious",
+      "prompt": "Deploy this Next.js Solarch frontend app to Vercel.",
+      "expected_trigger": true,
+      "expected_outcome": "Links project, checks environment settings, runs Vercel CLI deployment, and delegates to post-deployment verification."
+    },
+    {
+      "id": "vercel-deploy-complex",
+      "skill": "solarch-vercel-deploy",
+      "type": "complex",
+      "prompt": "Deploy a Vercel preview build, verify public vs secret environment variables, then prepare the production deployment using --prod.",
+      "expected_trigger": true,
+      "expected_outcome": "Differentiates preview vs production vercel commands, pulls env variables prior to prebuilt steps, protects secrets, and verifies production deployment."
+    },
+    {
+      "id": "vercel-deploy-near-miss",
+      "skill": "solarch-vercel-deploy",
+      "type": "near-miss",
+      "prompt": "Deploy this edge worker API to Cloudflare Workers.",
+      "expected_trigger": false,
+      "expected_outcome": "Recognizes Cloudflare Workers target and does not trigger Vercel deployment skill."
+    },
+    {
+      "id": "render-deploy-obvious",
+      "skill": "solarch-render-deploy",
+      "type": "obvious",
+      "prompt": "Deploy the Solarch Server API to Render.",
+      "expected_trigger": true,
+      "expected_outcome": "Inspects service requirements, configures render.yaml Blueprint with HTTP health check path, protects database secrets, and verifies post-deployment health."
+    },
+    {
+      "id": "render-deploy-complex",
+      "skill": "solarch-render-deploy",
+      "type": "complex",
+      "prompt": "Use the existing render.yaml Blueprint, preserve environment variables, deploy the containerized web service, and verify the /health endpoint returns 200 OK.",
+      "expected_trigger": true,
+      "expected_outcome": "Preserves existing render.yaml, manages database credentials securely via dashboard/secret files, triggers deployment, and confirms HTTP health probe."
+    },
+    {
+      "id": "render-deploy-near-miss",
+      "skill": "solarch-render-deploy",
+      "type": "near-miss",
+      "prompt": "Set up a GitHub Actions workflow for pull request linting and testing.",
+      "expected_trigger": false,
+      "expected_outcome": "Recognizes CI workflow setup task and does not trigger Render deployment skill."
+    },
+    {
+      "id": "fly-deploy-obvious",
+      "skill": "solarch-fly-deploy",
+      "type": "obvious",
+      "prompt": "Deploy this Dockerized Solarch API server to Fly.io.",
+      "expected_trigger": true,
+      "expected_outcome": "Inspects Dockerfile, configures fly.toml service ports and health checks, sets secrets via fly secrets set, and deploys using fly deploy."
+    },
+    {
+      "id": "fly-deploy-complex",
+      "skill": "solarch-fly-deploy",
+      "type": "complex",
+      "prompt": "The repo already has fly.toml and a /health check endpoint; deploy the application without recreating fly.toml or losing encrypted Fly secrets.",
+      "expected_trigger": true,
+      "expected_outcome": "Preserves existing fly.toml, validates machine health checks, uses fly secrets set for credentials, executes fly deploy, and verifies status via fly checks list."
+    },
+    {
+      "id": "fly-deploy-near-miss",
+      "skill": "solarch-fly-deploy",
+      "type": "near-miss",
+      "prompt": "Deploy this static HTML SPA frontend to Vercel.",
+      "expected_trigger": false,
+      "expected_outcome": "Recognizes static SPA on Vercel and does not trigger Fly.io deployment skill."
+    },
+    {
+      "id": "deployment-verify-obvious",
+      "skill": "solarch-deployment-verify",
+      "type": "obvious",
+      "prompt": "Check whether this deployed Solarch API endpoint is actually working.",
+      "expected_trigger": true,
+      "expected_outcome": "Queries DNS, HTTPS, HTTP status, application shell, and Solarch API health endpoint, outputting a structured verification report."
+    },
+    {
+      "id": "deployment-verify-complex",
+      "skill": "solarch-deployment-verify",
+      "type": "complex",
+      "prompt": "Verify DNS, HTTPS, application health, Solarch API reachability, and critical path endpoints for our production deployment without performing destructive database writes, and provide safe rollback steps if verification fails.",
+      "expected_trigger": true,
+      "expected_outcome": "Performs safe 4-layer verification, isolates failure boundaries if health probes fail, and outputs non-destructive provider rollback guidance."
+    },
+    {
+      "id": "deployment-verify-near-miss",
+      "skill": "solarch-deployment-verify",
+      "type": "near-miss",
+      "prompt": "Deploy this application to Cloudflare Workers.",
+      "expected_trigger": false,
+      "expected_outcome": "Recognizes deployment execution task and does not trigger post-deployment verification as primary action."
+    },
+    {
+      "id": "collision-ci-gha-failing",
+      "skill": "solarch-github-actions",
+      "type": "collision",
+      "prompt": "Our GitHub Actions pipeline is failing because the integration tests aren't running.",
+      "expected_primary": "solarch-github-actions",
+      "expected_supporting": ["solarch-ci-cd"],
+      "must_not_trigger": ["solarch-ci-test"],
+      "rationale": "Workflow YAML job configuration and GitHub Actions runner setup is primary to solarch-github-actions, with CI pipeline test strategy as supporting context."
+    },
+    {
+      "id": "collision-ci-pipeline-design",
+      "skill": "solarch-ci-cd",
+      "type": "collision",
+      "prompt": "Design the CI pipeline for a Solarch Core Client API change and decide which tests should run on PR versus release.",
+      "expected_primary": "solarch-ci-cd",
+      "expected_supporting": ["solarch-testing"],
+      "must_not_trigger": ["solarch-github-actions"],
+      "rationale": "General CI/CD pipeline strategy and PR vs release gate design belongs to solarch-ci-cd, not platform-specific GitHub Actions YAML mechanics."
+    },
+    {
+      "id": "collision-gha-yaml-release",
+      "skill": "solarch-github-actions",
+      "type": "collision",
+      "prompt": "Fix the GitHub Actions YAML so our release job runs the correct Solarch contract tests.",
+      "expected_primary": "solarch-github-actions",
+      "expected_supporting": ["solarch-ci-cd"],
+      "must_not_trigger": ["solarch-build-release"],
+      "rationale": "Editing GitHub Actions workflow YAML step definitions is owned by solarch-github-actions."
+    },
+    {
+      "id": "collision-build-release-exports",
+      "skill": "solarch-build-release",
+      "type": "collision",
+      "prompt": "Our CI is green but the npm package published by the release job is missing exports.",
+      "expected_primary": "solarch-build-release",
+      "expected_supporting": ["solarch-ci-cd"],
+      "must_not_trigger": ["solarch-code-quality"],
+      "rationale": "Diagnosing broken npm package exports and tarball artifacts is owned by solarch-build-release."
+    },
+    {
+      "id": "collision-eng-sec-codequality",
+      "skill": "solarch-security-review",
+      "type": "collision",
+      "prompt": "Review this Solarch Core Client PR for security problems and architecture problems.",
+      "expected_primary": "solarch-security-review",
+      "expected_supporting": ["solarch-code-quality"],
+      "must_not_trigger": ["solarch-deployment"],
+      "rationale": "Multi-faceted review prompt requiring both security audit and architectural code quality analysis."
+    },
+    {
+      "id": "collision-eng-ponytail-security",
+      "skill": "solarch-ponytail",
+      "type": "collision",
+      "prompt": "Make this Core Client implementation simpler without weakening authorization or error handling.",
+      "expected_primary": "solarch-ponytail",
+      "expected_supporting": ["solarch-code-quality"],
+      "must_not_trigger": ["solarch-security-review"],
+      "rationale": "Simplification request owned by solarch-ponytail, explicitly preserving security & error handling safeguards."
+    },
+    {
+      "id": "collision-eng-refactor-vs-dep",
+      "skill": "solarch-refactor-review",
+      "type": "collision",
+      "prompt": "Should we refactor this duplicated API abstraction, and if so how?",
+      "expected_primary": "solarch-refactor-review",
+      "expected_supporting": ["solarch-code-quality"],
+      "must_not_trigger": ["solarch-dependency-audit"],
+      "rationale": "Architectural abstraction review belongs to solarch-refactor-review, not package dependency auditing."
+    },
+    {
+      "id": "collision-eng-dep-vs-refactor",
+      "skill": "solarch-dependency-audit",
+      "type": "collision",
+      "prompt": "Do we still need axios in this Solarch SDK?",
+      "expected_primary": "solarch-dependency-audit",
+      "expected_supporting": ["solarch-ponytail"],
+      "must_not_trigger": ["solarch-refactor-review"],
+      "rationale": "Evaluating third-party npm package necessity is owned by solarch-dependency-audit."
+    },
+    {
+      "id": "collision-deploy-cloudflare-verify",
+      "skill": "solarch-cloudflare-deploy",
+      "type": "collision",
+      "prompt": "Deploy this Solarch API to Cloudflare and verify that it actually works.",
+      "expected_primary": "solarch-cloudflare-deploy",
+      "expected_supporting": ["solarch-deployment-verify"],
+      "must_not_trigger": ["solarch-vercel-deploy", "solarch-render-deploy", "solarch-fly-deploy"],
+      "rationale": "Cloudflare deployment command execution followed by post-deployment health verification chain."
+    },
+    {
+      "id": "collision-deploy-generic-prep",
+      "skill": "solarch-deployment",
+      "type": "collision",
+      "prompt": "Prepare this Solarch application for production deployment.",
+      "expected_primary": "solarch-deployment",
+      "expected_supporting": [],
+      "must_not_trigger": ["solarch-cloudflare-deploy", "solarch-vercel-deploy", "solarch-render-deploy", "solarch-fly-deploy"],
+      "rationale": "Target detection and generic deployment preparation before provider selection."
+    },
+    {
+      "id": "collision-deploy-gha-vercel",
+      "skill": "solarch-vercel-deploy",
+      "type": "collision",
+      "prompt": "Deploy this through GitHub Actions to Vercel.",
+      "expected_primary": "solarch-vercel-deploy",
+      "expected_supporting": ["solarch-github-actions"],
+      "must_not_trigger": ["solarch-cloudflare-deploy", "solarch-render-deploy", "solarch-fly-deploy"],
+      "rationale": "Vercel deployment target combined with GitHub Actions workflow configuration."
+    },
+    {
+      "id": "collision-deploy-cli0-vs-500",
+      "skill": "solarch-deployment-verify",
+      "type": "collision",
+      "prompt": "The deployment CLI returned exit code 0, but the Solarch API is returning 500.",
+      "expected_primary": "solarch-deployment-verify",
+      "expected_supporting": ["solarch-deployment"],
+      "must_not_trigger": [],
+      "rationale": "Post-deployment failure diagnosis distinguishing CLI exit code 0 from actual runtime application health."
+    },
+    {
+      "id": "collision-meta-duplicate-test-skill",
+      "skill": "solarch-skill-creator",
+      "type": "collision",
+      "prompt": "Create a separate skill just for running TypeScript tests in CI.",
+      "expected_primary": "solarch-skill-creator",
+      "expected_supporting": [],
+      "must_not_trigger": [],
+      "rationale": "Evaluates Decision Gate rule 4; recommends extending solarch-ci-cd rather than creating a duplicate standalone test skill."
+    },
+    {
+      "id": "collision-meta-generic-clean-code",
+      "skill": "solarch-skill-creator",
+      "type": "collision",
+      "prompt": "Create a skill that tells agents to write clean code.",
+      "expected_primary": "solarch-skill-creator",
+      "expected_supporting": [],
+      "must_not_trigger": [],
+      "rationale": "Evaluates Decision Gate rule 3; recommends using existing Engineering skills (solarch-ponytail, solarch-code-quality) instead of a vague duplicate skill."
+    },
+    {
+      "id": "collision-meta-justified-cloudflare",
+      "skill": "solarch-skill-creator",
+      "type": "collision",
+      "prompt": "Create a skill for Cloudflare deployment.",
+      "expected_primary": "solarch-skill-creator",
+      "expected_supporting": [],
+      "must_not_trigger": [],
+      "rationale": "Evaluates Decision Gate rule 2; recognizes provider-specific deployment skill is specialized and justified."
+    },
+    {
+      "id": "collision-meta-speculative-db-skill",
+      "skill": "solarch-skill-creator",
+      "type": "collision",
+      "prompt": "Create a skill for an unreleased Solarch database provider we might support next year.",
+      "expected_primary": "solarch-skill-creator",
+      "expected_supporting": [],
+      "must_not_trigger": [],
+      "rationale": "Evaluates Decision Gate rule 7; refuses to invent speculative features, asking whether experimental prototype is explicitly desired."
+    }
+  ]
+}
