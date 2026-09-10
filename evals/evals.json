@@ -570,6 +570,136 @@
       "expected_supporting": [],
       "must_not_trigger": [],
       "rationale": "Evaluates Decision Gate rule 7; refuses to invent speculative features, asking whether experimental prototype is explicitly desired."
+    },
+    {
+      "id": "api-scaler-obvious",
+      "skill": "solarch-api-scaler",
+      "type": "obvious",
+      "prompt": "Benchmark this Solarch API endpoint under 50k requests per second.",
+      "expected_trigger": true,
+      "expected_outcome": "Establishes a baseline benchmark using a dedicated load generator, instrumenting CPU, network, memory, and database IOPS to assess capacity."
+    },
+    {
+      "id": "api-scaler-complex",
+      "skill": "solarch-api-scaler",
+      "type": "complex",
+      "prompt": "Our Solarch API is hitting 100% CPU at 80k RPS while Postgres is mostly idle. Determine the bottleneck and the cheapest scaling strategy.",
+      "expected_trigger": true,
+      "expected_outcome": "Identifies CPU saturation on the application server layer, verifies single-core vs multi-core process clustering, and recommends enabling multi-process clustering or worker pooling before considering code rewrites or bigger hardware."
+    },
+    {
+      "id": "api-scaler-near-miss",
+      "skill": "solarch-api-scaler",
+      "type": "near-miss",
+      "prompt": "Clean up this API handler because the code is difficult to read.",
+      "expected_trigger": false,
+      "expected_outcome": "Recognizes this as a code readability and formatting request, routing to solarch-code-quality rather than triggering an API throughput scaling workflow."
+    },
+    {
+      "id": "api-scaler-premature-optimization",
+      "skill": "solarch-api-scaler",
+      "type": "complex",
+      "prompt": "We only have 50 requests per second. Should we rewrite the API in Rust?",
+      "expected_trigger": true,
+      "expected_outcome": "Evaluates the performance requirement and strongly rejects premature optimization, advising that standard Solarch Server easily handles 50 RPS without introducing the complexity of a native rewrite."
+    },
+    {
+      "id": "api-scaler-database-bottleneck",
+      "skill": "solarch-api-scaler",
+      "type": "complex",
+      "prompt": "Our Solarch API database is saturated while application CPU is low under load.",
+      "expected_trigger": true,
+      "expected_outcome": "Diagnoses database driver saturation (IOPS/CPU), checks for unindexed queries, table scans, or N+1 loops before recommending in-memory caching (Redis/Valkey) or write-buffering."
+    },
+    {
+      "id": "rtk-obvious-test",
+      "skill": "solarch-rtk",
+      "type": "obvious",
+      "prompt": "Use RTK to reduce the noisy output from our test commands.",
+      "expected_trigger": true,
+      "expected_outcome": "Applies RTK test command filters (e.g. rtk vitest, rtk jest, rtk test) to collapse passing tests into counts and isolate failing assertions."
+    },
+    {
+      "id": "rtk-obvious-shell",
+      "skill": "solarch-rtk",
+      "type": "obvious",
+      "prompt": "How can we reduce the amount of shell output the Solarch agent reads?",
+      "expected_trigger": true,
+      "expected_outcome": "Introduces token-efficient CLI workflows with RTK command proxies (git, build, test, grep), explaining progressive exploration and bash output compression."
+    },
+    {
+      "id": "rtk-complex",
+      "skill": "solarch-rtk",
+      "type": "complex",
+      "prompt": "Our agent keeps consuming huge amounts of context from git diffs and test logs. Set up a token-efficient workflow without hiding important failures.",
+      "expected_trigger": true,
+      "expected_outcome": "Configures progressive exploration and RTK command patterns for Git diffs and test logs while preserving full error outputs and highlighting rtk proxy for uncompressed escalation."
+    },
+    {
+      "id": "rtk-near-miss",
+      "skill": "solarch-rtk",
+      "type": "near-miss",
+      "prompt": "Write a Rust CLI for Solarch.",
+      "expected_trigger": false,
+      "expected_outcome": "Recognizes this as a Rust application development task rather than an agent shell token-reduction workflow, refusing to trigger solarch-rtk."
+    },
+    {
+      "id": "rtk-safety",
+      "skill": "solarch-rtk",
+      "type": "complex",
+      "prompt": "Use compact output, but show the complete failing stack trace when debugging this production issue.",
+      "expected_trigger": true,
+      "expected_outcome": "Employs progressive investigation with compact initial output while strictly preserving full diagnostic fidelity and uncompressed stack traces via rtk proxy or raw shell execution."
+    },
+    {
+      "id": "collision-api-scaler-vs-codequality",
+      "skill": "solarch-api-scaler",
+      "type": "collision",
+      "prompt": "Our Solarch API is slow and the handler also looks badly structured.",
+      "expected_primary": "solarch-api-scaler",
+      "expected_supporting": ["solarch-code-quality"],
+      "must_not_trigger": ["solarch-deployment"],
+      "rationale": "Throughput and latency investigation is primarily owned by solarch-api-scaler, with solarch-code-quality providing supporting review for code structuring."
+    },
+    {
+      "id": "collision-api-scaler-vs-refactor",
+      "skill": "solarch-api-scaler",
+      "type": "collision",
+      "prompt": "Should we rewrite this Solarch endpoint because it only handles 5k RPS?",
+      "expected_primary": "solarch-api-scaler",
+      "expected_supporting": ["solarch-refactor-review"],
+      "must_not_trigger": [],
+      "rationale": "solarch-api-scaler evaluates whether the 5k RPS load genuinely justifies a rewrite, while solarch-refactor-review assesses structural changes without automatically approving a rewrite."
+    },
+    {
+      "id": "collision-rtk-vs-testing",
+      "skill": "solarch-rtk",
+      "type": "collision",
+      "prompt": "Our test suite prints 20,000 lines of output.",
+      "expected_primary": "solarch-rtk",
+      "expected_supporting": ["solarch-testing"],
+      "must_not_trigger": [],
+      "rationale": "Compressing noisy test runner output into token-efficient results is owned by solarch-rtk; test design and coverage remain with solarch-testing."
+    },
+    {
+      "id": "collision-rtk-vs-codequality",
+      "skill": "solarch-rtk",
+      "type": "collision",
+      "prompt": "Make this repository easier for an AI agent to navigate because every command dumps huge amounts of output.",
+      "expected_primary": "solarch-rtk",
+      "expected_supporting": ["solarch-code-quality"],
+      "must_not_trigger": [],
+      "rationale": "Minimizing shell and command verbosity for agent consumption is owned by solarch-rtk, while solarch-code-quality assists with repository structure clarity."
+    },
+    {
+      "id": "collision-rtk-vs-rust",
+      "skill": "solarch-rtk",
+      "type": "collision",
+      "prompt": "Build this Solarch SDK component in Rust.",
+      "expected_primary": "solarch-code-quality",
+      "expected_supporting": ["solarch-ponytail"],
+      "must_not_trigger": ["solarch-rtk"],
+      "rationale": "Developing a Solarch SDK component in Rust is application implementation, not an agent token-reduction proxy workflow; solarch-rtk must not trigger."
     }
   ]
 }
